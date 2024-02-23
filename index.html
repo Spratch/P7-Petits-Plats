@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/output.css" rel="stylesheet">
+    <script src="./js/script.js"></script>
+    <title>Les Petits Plats</title>
+</head>
+<body class="antialiased">
+    <header class="absolute top-0 left-0 w-full pt-12 px-14 z-10">
+        <img src="../assets/logo/logo.svg" alt="Les petits plats" class="h-6">
+    </header>
+    <section id="hero" class="bg-[url('../assets/images/lampos-aritonang-24gR_9lCdes-unsplash.jpeg')] bg-cover bg-center">
+        <div class="w-full h-full flex flex-col items-center justify-center py-44 backdrop-brightness-50">
+            <form action="" class="w-4/6 flex items-center flex-col">
+                <label for="searchbar"><h1 class="uppercase text-yellow font-display text-5xl leading-tight text-center p-11">Cherchez parmi plus de 1500 recettes du quotidien, simples et délicieuses</h1></label>
+                <div class="relative w-full">
+                    <input type="text" name="" id="searchbar" class="w-full py-6 px-9 rounded-xl" placeholder="Rechercher une recette, un ingrédient, …">
+                    <button type="submit" class="absolute bg-black stroke-white right-0 m-2.5 rounded-lg p-3 hover:bg-yellow hover:stroke-black">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <circle cx="10" cy="10" r="9.5"/>
+                            <line x1="18.3536" y1="18.6464" x2="27.3536" y2="27.6464"/>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <main class="bg-offwhite w-full py-5 px-24 flex flex-col gap-14">
+        <nav id="filters" class="flex flex-row w-full place-content-between items-center">
+            <div class="flex flex-row gap-16">
+                <div id="sort-button-ingredients" class="bg-white rounded-xl inline-flex flex-col z-10 relative">
+                    <button onclick="openFilterDropdown('ingredients')" class="p-4 flex gap-x-16 justify-center items-center relative">
+                        <p>Ingrédients</p>
+                        <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1L7.5 7L14 1" stroke="#1B1B1B" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div id="dropdown-ingredients" class="text-sm w-full hidden flex-col gap-4 absolute top-14 bg-white rounded-b-xl">
+                        <form action="" class="relative flex items-center">
+                            <label for="" class="hidden"></label>
+                            <input type="text" class="w-full border border-light-grey rounded-sm p-2 mx-4 text-grey">
+                            <button type="submit" class="absolute stroke-grey hover:stroke-light-grey right-0 m-2 mr-6 rounded-full">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                    <circle cx="5" cy="5" r="4.75" stroke-width="0.5"/>
+                                    <line x1="9.17678" y1="9.32322" x2="13.6768" y2="13.8232" stroke-width="0.5"/>
+                                </svg>
+                            </button>
+                        </form>
+                        <ul class="flex flex-col max-h-44 overflow-y-scroll">
+                            <li class="px-4 py-1.5 hover:bg-yellow"><a href="">Jus de citron</a></li>
+                            <li class="px-4 py-1.5 hover:bg-yellow"><a href="">Jus de citron</a></li>
+                            <li class="px-4 py-1.5 hover:bg-yellow"><a href="">Jus de citron</a></li>
+                            <li class="px-4 py-1.5 hover:bg-yellow"><a href="">Jus de citron</a></li>
+                            <li class="px-4 py-1.5 hover:bg-yellow"><a href="">Jus de citron</a></li>
+                            <li class="px-4 py-1.5 hover:bg-yellow"><a href="">Jus de citron</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="sort-button-appliances" class="bg-white rounded-xl inline-flex flex-col z-10 relative">
+                    <button onclick="openFilterDropdown('appliances')" class="p-4 flex gap-x-16 justify-center items-center relative">
+                        <p>Appareils</p>
+                        <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1L7.5 7L14 1" stroke="#1B1B1B" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div id="dropdown-appliances" class="text-sm w-full hidden flex-col gap-4 absolute top-14 bg-white rounded-b-xl">
+                        <form action="" class="relative flex items-center">
+                            <label for="" class="hidden"></label>
+                            <input type="text" class="w-full border border-light-grey rounded-sm p-2 mx-4 text-grey">
+                            <button type="submit" class="absolute stroke-grey hover:stroke-light-grey right-0 m-2 mr-6 rounded-full">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                    <circle cx="5" cy="5" r="4.75" stroke-width="0.5"/>
+                                    <line x1="9.17678" y1="9.32322" x2="13.6768" y2="13.8232" stroke-width="0.5"/>
+                                </svg>
+                            </button>
+                        </form>
+                        <ul class="flex flex-col max-h-44 overflow-y-scroll">
+                            <li class="px-4 py-1.5 hover:bg-yellow"><a href="">Jus de citron</a></li>
+                            <li class="px-4 py-1.5 hover:bg-yellow"><a href="">Jus de citron</a></li>
+                            <li class="px-4 py-1.5 hover:bg-yellow"><a href="">Jus de citron</a></li>
+                            <li class="px-4 py-1.5 hover:bg-yellow"><a href="">Jus de citron</a></li>
+                            <li class="px-4 py-1.5 hover:bg-yellow"><a href="">Jus de citron</a></li>
+                            <li class="px-4 py-1.5 hover:bg-yellow"><a href="">Jus de citron</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="sort-button-ustensils" class="bg-white rounded-xl inline-flex flex-col z-10 relative">
+                    <button onclick="openFilterDropdown('ustensils')" class="p-4 flex gap-x-16 justify-center items-center relative">
+                        <p>Ustensiles</p>
+                        <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1L7.5 7L14 1" stroke="#1B1B1B" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div id="dropdown-ustensils" class="text-sm w-full hidden flex-col gap-4 absolute top-14 bg-white rounded-b-xl">
+                        <form action="" class="relative flex items-center">
+                            <label for="" class="hidden"></label>
+                            <input type="text" class="w-full border border-light-grey rounded-sm p-2 mx-4 text-grey">
+                            <button type="submit" class="absolute stroke-grey hover:stroke-light-grey right-0 m-2 mr-6 rounded-full">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                    <circle cx="5" cy="5" r="4.75" stroke-width="0.5"/>
+                                    <line x1="9.17678" y1="9.32322" x2="13.6768" y2="13.8232" stroke-width="0.5"/>
+                                </svg>
+                            </button>
+                        </form>
+                        <ul class="flex flex-col max-h-44 overflow-y-scroll">
+                            <li class="px-4 py-1.5 hover:bg-yellow"><a href="">Jus de citron</a></li>
+                            <li class="px-4 py-1.5 hover:bg-yellow"><a href="">Jus de citron</a></li>
+                            <li class="px-4 py-1.5 hover:bg-yellow"><a href="">Jus de citron</a></li>
+                            <li class="px-4 py-1.5 hover:bg-yellow"><a href="">Jus de citron</a></li>
+                            <li class="px-4 py-1.5 hover:bg-yellow"><a href="">Jus de citron</a></li>
+                            <li class="px-4 py-1.5 hover:bg-yellow"><a href="">Jus de citron</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <span class="font-display text-xl">1500 recettes</span>
+        </nav>
+        <div id="recipes-grid" class="grid grid-cols-3 gap-12">
+            <article class="rounded-3xl overflow-hidden bg-white w-full shadow-card">
+                <div class="w-full relative">
+                    <img class="aspect-[3/2] object-cover" src="../assets/images/Recette01.jpg" alt="">
+                    <span class="absolute top-0 right-0 m-5 bg-yellow text-black py-1 px-4 text-xs rounded-xl">10 min</span>
+                </div>
+                <div class="py-8 px-6 flex flex-col gap-7">
+                    <h2 class="font-display text-lg">Limonade de coco</h2>
+                    <div class="flex flex-col gap-8">
+                        <div class="flex flex-col gap-3.5">
+                            <h3 class="uppercase text-grey text-xs font-bold tracking-wider">Recette</h3>
+                            <p class="text-sm">Mettre les glaçons à votre goût dans le blender, Ajouter le lait  la crème de coco, le jus de 2 citrons et le sucre ensemble. Mixer jusqu'à obtenir la consistance désirée.</p>
+                        </div>
+                        <div class="flex flex-col gap-3.5">
+                            <h3 class="uppercase text-grey text-xs font-bold tracking-wider">Ingrédients</h3>
+                            <div class="grid grid-cols-2 gap-y-5 text-sm">
+                                <div>
+                                    <p class="">Lait de coco</p>
+                                    <p class="text-grey">400ml</p>
+                                </div>
+                                <div>
+                                    <p class="">Jus de citron</p>
+                                    <p class="text-grey">2</p>
+                                </div>
+                                <div>
+                                    <p class="">Lait de coco</p>
+                                    <p class="text-grey">400ml</p>
+                                </div>
+                                <div>
+                                    <p class="">Jus de citron</p>
+                                    <p class="text-grey">2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="rounded-3xl overflow-hidden bg-white w-full shadow-card">
+                <div class="w-full relative">
+                    <img class="aspect-[3/2] object-cover" src="../assets/images/Recette02.jpg" alt="">
+                    <span class="absolute top-0 right-0 m-5 bg-yellow text-black py-1 px-4 text-xs rounded-xl">10 min</span>
+                </div>
+                <div class="py-8 px-6 flex flex-col gap-7">
+                    <h2 class="font-display text-lg">Limonade de coco</h2>
+                    <div class="flex flex-col gap-8">
+                        <div class="flex flex-col gap-3.5">
+                            <h3 class="uppercase text-grey text-xs font-bold tracking-wider">Recette</h3>
+                            <p class="text-sm">Mettre les glaçons à votre goût dans le blender, Ajouter le lait  la crème de coco, le jus de 2 citrons et le sucre ensemble. Mixer jusqu'à obtenir la consistance désirée.</p>
+                        </div>
+                        <div class="flex flex-col gap-3.5">
+                            <h3 class="uppercase text-grey text-xs font-bold tracking-wider">Ingrédients</h3>
+                            <div class="grid grid-cols-2 gap-y-5 text-sm">
+                                <div>
+                                    <p class="">Lait de coco</p>
+                                    <p class="text-grey">400ml</p>
+                                </div>
+                                <div>
+                                    <p class="">Jus de citron</p>
+                                    <p class="text-grey">2</p>
+                                </div>
+                                <div>
+                                    <p class="">Lait de coco</p>
+                                    <p class="text-grey">400ml</p>
+                                </div>
+                                <div>
+                                    <p class="">Jus de citron</p>
+                                    <p class="text-grey">2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="rounded-3xl overflow-hidden bg-white w-full shadow-card">
+                <div class="w-full relative">
+                    <img class="aspect-[3/2] object-cover" src="../assets/images/Recette03.jpg" alt="">
+                    <span class="absolute top-0 right-0 m-5 bg-yellow text-black py-1 px-4 text-xs rounded-xl">10 min</span>
+                </div>
+                <div class="py-8 px-6 flex flex-col gap-7">
+                    <h2 class="font-display text-lg">Limonade de coco</h2>
+                    <div class="flex flex-col gap-8">
+                        <div class="flex flex-col gap-3.5">
+                            <h3 class="uppercase text-grey text-xs font-bold tracking-wider">Recette</h3>
+                            <p class="text-sm">Mettre les glaçons à votre goût dans le blender, Ajouter le lait  la crème de coco, le jus de 2 citrons et le sucre ensemble. Mixer jusqu'à obtenir la consistance désirée.</p>
+                        </div>
+                        <div class="flex flex-col gap-3.5">
+                            <h3 class="uppercase text-grey text-xs font-bold tracking-wider">Ingrédients</h3>
+                            <div class="grid grid-cols-2 gap-y-5 text-sm">
+                                <div>
+                                    <p class="">Lait de coco</p>
+                                    <p class="text-grey">400ml</p>
+                                </div>
+                                <div>
+                                    <p class="">Jus de citron</p>
+                                    <p class="text-grey">2</p>
+                                </div>
+                                <div>
+                                    <p class="">Lait de coco</p>
+                                    <p class="text-grey">400ml</p>
+                                </div>
+                                <div>
+                                    <p class="">Jus de citron</p>
+                                    <p class="text-grey">2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="rounded-3xl overflow-hidden bg-white w-full shadow-card">
+                <div class="w-full relative">
+                    <img class="aspect-[3/2] object-cover" src="../assets/images/Recette04.jpg" alt="">
+                    <span class="absolute top-0 right-0 m-5 bg-yellow text-black py-1 px-4 text-xs rounded-xl">10 min</span>
+                </div>
+                <div class="py-8 px-6 flex flex-col gap-7">
+                    <h2 class="font-display text-lg">Limonade de coco</h2>
+                    <div class="flex flex-col gap-8">
+                        <div class="flex flex-col gap-3.5">
+                            <h3 class="uppercase text-grey text-xs font-bold tracking-wider">Recette</h3>
+                            <p class="text-sm">Mettre les glaçons à votre goût dans le blender, Ajouter le lait  la crème de coco, le jus de 2 citrons et le sucre ensemble. Mixer jusqu'à obtenir la consistance désirée.</p>
+                        </div>
+                        <div class="flex flex-col gap-3.5">
+                            <h3 class="uppercase text-grey text-xs font-bold tracking-wider">Ingrédients</h3>
+                            <div class="grid grid-cols-2 gap-y-5 text-sm">
+                                <div>
+                                    <p class="">Lait de coco</p>
+                                    <p class="text-grey">400ml</p>
+                                </div>
+                                <div>
+                                    <p class="">Jus de citron</p>
+                                    <p class="text-grey">2</p>
+                                </div>
+                                <div>
+                                    <p class="">Lait de coco</p>
+                                    <p class="text-grey">400ml</p>
+                                </div>
+                                <div>
+                                    <p class="">Jus de citron</p>
+                                    <p class="text-grey">2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+</body>
+</html>
