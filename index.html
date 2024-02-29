@@ -11,13 +11,13 @@
     <title>Les Petits Plats</title>
 </head>
 <body class="antialiased">
-    <header class="absolute top-0 left-0 w-full pt-12 px-14 z-10">
+    <header class="absolute top-0 left-0 w-full pt-12 px-14 z-10 flex flex-col items-center md:block">
         <img src="../assets/logo/logo.svg" alt="Les petits plats" class="h-6">
     </header>
     <section id="hero" class="bg-[url('../assets/images/lampos-aritonang-24gR_9lCdes-unsplash.jpeg')] bg-cover bg-center">
-        <div class="w-full h-full flex flex-col items-center justify-center py-44 backdrop-brightness-50">
-            <form action="" class="w-4/6 flex items-center flex-col">
-                <label for="searchbar"><h1 class="uppercase text-yellow font-display text-5xl leading-tight text-center p-11">Cherchez parmi plus de 1500 recettes du quotidien, simples et délicieuses</h1></label>
+        <div class="w-full h-full flex flex-col items-center justify-center py-28 md:py-44 backdrop-brightness-50">
+            <form action="" class="w-full md:w-4/6 max-w-7xl px-6 md:px-0 flex items-center flex-col">
+                <label for="searchbar"><h1 class="uppercase text-yellow font-display text-4xl md:text-5xl leading-tight text-center p-4 md:p-11">Cherchez parmi plus de 1500 recettes du quotidien, simples et délicieuses</h1></label>
                 <div class="relative w-full">
                     <input type="text" name="" id="searchbar" class="w-full py-6 px-9 rounded-xl" placeholder="Rechercher une recette, un ingrédient, …">
                     <button type="submit" class="absolute bg-black stroke-white right-0 m-2.5 rounded-lg p-3 hover:bg-yellow hover:stroke-black">
@@ -30,17 +30,17 @@
             </form>
         </div>
     </section>
-    <main class="bg-offwhite w-full py-5 px-24 flex flex-col gap-14">
-        <nav id="filters" class="flex flex-row w-full place-content-between items-center">
-            <div class="flex flex-row gap-16">
-                <div id="sort-button-ingredients" class="bg-white rounded-xl inline-flex flex-col z-10 relative">
+    <main class="bg-offwhite w-full py-5 px-6 md:px-8 xl:px-24 flex flex-col gap-14 items-center">
+        <nav id="filters" class="flex flex-col-reverse md:flex-row gap-4 w-full place-content-between items-start md:items-center mx-auto max-w-7xl">
+            <div class="flex flex-row flex-wrap md:flex-nowrap gap-4 md:gap-8 xl:gap-16">
+                <div id="sort-button-ingredients" class="bg-white rounded-xl inline-flex flex-col relative">
                     <button onclick="toggleFilterDropdown('ingredients')" class="p-4 flex gap-x-16 justify-center items-center relative">
                         <p>Ingrédients</p>
                         <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-all duration-200 ease-in-out">
                             <path d="M1 1L7.5 7L14 1" stroke="#1B1B1B" stroke-linecap="round"/>
                         </svg>
                     </button>
-                    <div id="dropdown-ingredients" class="text-sm w-full hidden flex-col gap-4 absolute top-14 bg-white rounded-b-xl">
+                    <div id="dropdown-ingredients" class="text-sm w-full hidden flex-col gap-4 absolute top-14 bg-white rounded-b-xl z-10">
                         <form action="" class="relative flex items-center">
                             <label for="" class="hidden"></label>
                             <input type="text" class="w-full border border-light-grey rounded-sm p-2 mx-4 text-grey">
@@ -61,14 +61,14 @@
                         </ul>
                     </div>
                 </div>
-                <div id="sort-button-appliances" class="bg-white rounded-xl inline-flex flex-col z-10 relative">
+                <div id="sort-button-appliances" class="bg-white rounded-xl inline-flex flex-col relative">
                     <button onclick="toggleFilterDropdown('appliances')" class="p-4 flex gap-x-16 justify-center items-center relative">
                         <p>Appareils</p>
                         <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-all duration-200 ease-in-out">
                             <path d="M1 1L7.5 7L14 1" stroke="#1B1B1B" stroke-linecap="round"/>
                         </svg>
                     </button>
-                    <div id="dropdown-appliances" class="text-sm w-full hidden flex-col gap-4 absolute top-14 bg-white rounded-b-xl">
+                    <div id="dropdown-appliances" class="text-sm w-full hidden flex-col gap-4 absolute top-14 bg-white rounded-b-xl z-10">
                         <form action="" class="relative flex items-center">
                             <label for="" class="hidden"></label>
                             <input type="text" class="w-full border border-light-grey rounded-sm p-2 mx-4 text-grey">
@@ -89,14 +89,14 @@
                         </ul>
                     </div>
                 </div>
-                <div id="sort-button-ustensils" class="bg-white rounded-xl inline-flex flex-col z-10 relative">
+                <div id="sort-button-ustensils" class="bg-white rounded-xl inline-flex flex-col relative">
                     <button onclick="toggleFilterDropdown('ustensils')" class="p-4 flex gap-x-16 justify-center items-center relative">
                         <p>Ustensiles</p>
                         <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-all duration-200 ease-in-out">
                             <path d="M1 1L7.5 7L14 1" stroke="#1B1B1B" stroke-linecap="round"/>
                         </svg>
                     </button>
-                    <div id="dropdown-ustensils" class="text-sm w-full hidden flex-col gap-4 absolute top-14 bg-white rounded-b-xl">
+                    <div id="dropdown-ustensils" class="text-sm w-full hidden flex-col gap-4 absolute top-14 bg-white rounded-b-xl z-10">
                         <form action="" class="relative flex items-center">
                             <label for="" class="hidden"></label>
                             <input type="text" class="w-full border border-light-grey rounded-sm p-2 mx-4 text-grey">
@@ -120,7 +120,7 @@
             </div>
             <span class="font-display text-xl">1500 recettes</span>
         </nav>
-        <div id="recipes-grid" class="grid grid-cols-3 gap-12">
+        <div id="recipes-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 mx-auto max-w-7xl">
 
         </div>
     </main>
