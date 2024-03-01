@@ -37,9 +37,29 @@ function displayRecipes(){
     });
 }
 
+function displayFilters() {
+    const ulIngredients = document.querySelector("#dropdown-ingredients ul");
+    const ulAppliances = document.querySelector("#dropdown-appliances ul");
+    const ulUstensils = document.querySelector("#dropdown-ustensils ul");
+
+    const { ingredientsListDOM, appliancesListDOM, ustensilsListDOM } = filtersTemplate().getFilterDOM();
+
+    ingredientsListDOM.forEach((li) => {
+        ulIngredients.append(li);
+    });
+
+    appliancesListDOM.forEach((li) => {
+        ulAppliances.append(li);
+    });
+    ustensilsListDOM.forEach((li) => {
+        ulUstensils.append(li);
+    });
+}
+
 function init() {
     setTimeout(() => {
         displayRecipes();
+        displayFilters();
     }, 1);
 }
 

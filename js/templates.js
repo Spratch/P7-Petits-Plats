@@ -39,3 +39,23 @@ function recipeTemplate(recipe) {
 
     return { getRecipeDOM };
 }
+
+function filtersTemplate() {
+    const ingredientsList = [... new Set(recipes.map(recipe => recipe.ingredients.map(item => item.ingredient)).flat())];
+    const appliancesList = [... new Set(recipes.map(recipe => recipe.appliance))];
+    const ustensilsList = [... new Set(recipes.map(recipe => recipe.ustensils).flat())];
+
+    function createListDOM(items) {
+        return items.map(item => createDOMElement("li", { class: "px-4 py-1.5 hover:bg-yellow" }, item));
+    }
+    
+    function getFilterDOM() {
+        const ingredientsListDOM = createListDOM(ingredientsList);
+        const appliancesListDOM = createListDOM(appliancesList);
+        const ustensilsListDOM = createListDOM(ustensilsList);
+    
+        return { ingredientsListDOM, appliancesListDOM, ustensilsListDOM };
+    }
+    
+    return { getFilterDOM };
+}
