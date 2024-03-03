@@ -10,7 +10,7 @@ function toggleDropdownClasses(button) {
 }
 
 function toggleFilterDropdown(category) {
-    const button = document.querySelector(`#sort-button-${category}`);
+    const button = document.getElementById(`sort-button-${category}`);
 
     // Closes other dropdowns
     if (button.classList.contains("rounded-xl")) {
@@ -27,7 +27,7 @@ function toggleFilterDropdown(category) {
 }
 
 function displayRecipes(){
-    const recipesGrid = document.querySelector("#recipes-grid")
+    const recipesGrid = document.getElementById("recipes-grid")
 
     recipes.forEach((recipe) => {
         const recipeModel = recipeTemplate(recipe);
@@ -42,7 +42,7 @@ function displayFilters() {
     const ulAppliances = document.querySelector("#dropdown-appliances ul");
     const ulUstensils = document.querySelector("#dropdown-ustensils ul");
 
-    const { ingredientsListDOM, appliancesListDOM, ustensilsListDOM } = filtersTemplate().getFilterDOM();
+    const { ingredientsListDOM, appliancesListDOM, ustensilsListDOM } = filtersTemplate().getFilterListDOM();
 
     ingredientsListDOM.forEach((li) => {
         ulIngredients.append(li);
@@ -55,6 +55,54 @@ function displayFilters() {
         ulUstensils.append(li);
     });
 }
+
+let selectedFiltersList = [];
+
+function displaySelectedFilters() {
+    const selectedFiltersUl = document.getElementById("selected-filters");
+    
+    selectedFiltersUl.innerHTML = '';
+
+    if (selectedFiltersList.length > 0) {
+        selectedFiltersUl.classList.remove("hidden");
+        selectedFiltersUl.classList.add("flex");
+        
+        selectedFiltersList.forEach((selectedFilter) => {
+            const selectedFilterDOM = filtersTemplate().getSelectedFilterDOM(selectedFilter);
+            selectedFiltersUl.append(selectedFilterDOM);
+        });
+    } else {
+        selectedFiltersUl.classList.add("hidden");
+        selectedFiltersUl.classList.remove("flex");
+    }
+    console.log(selectedFiltersList);
+}
+
+function unselectFilter(filterToRemove) {
+    selectedFiltersList = selectedFiltersList.filter(item => item !== filterToRemove);
+    displaySelectedFilters();
+}
+
+function selectFilter(filterToAdd) {
+    selectedFiltersList.push(filterToAdd);
+    displaySelectedFilters();
+}
+
+function toggleFilter(filterToToggle, fromCheckbox) {
+    const checkedFilter = document.getElementById(filterToToggle);
+    const isChecked = checkedFilter.checked;
+    
+    if (isChecked) {
+        unselectFilter(filterToToggle);
+        
+        if (!fromCheckbox) {
+            checkedFilter.checked = false;
+        }
+    } else {
+        selectFilter(filterToToggle);
+    }
+}
+
 
 function init() {
     setTimeout(() => {

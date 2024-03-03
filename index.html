@@ -30,13 +30,13 @@
             </form>
         </div>
     </section>
-    <main class="bg-offwhite w-full py-5 px-6 md:px-8 xl:px-24 flex flex-col gap-14 items-center">
-        <nav id="filters" class="flex flex-col-reverse md:flex-row gap-4 w-full place-content-between items-start md:items-center mx-auto max-w-7xl">
+    <main class="bg-offwhite w-full py-5 px-6 md:px-8 xl:px-24 flex flex-col items-center">
+        <nav id="filters" class="flex flex-col-reverse md:flex-row gap-4 w-full place-content-between items-start md:items-center mx-auto max-w-7xl pb-5">
             <div class="flex flex-row flex-wrap md:flex-nowrap gap-4 md:gap-8 xl:gap-16">
                 <div id="sort-button-ingredients" class="bg-white rounded-xl inline-flex flex-col relative">
                     <button onclick="toggleFilterDropdown('ingredients')" class="p-4 flex gap-x-16 justify-center items-center relative">
                         <p>Ingrédients</p>
-                        <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-all duration-200 ease-in-out">
+                        <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition">
                             <path d="M1 1L7.5 7L14 1" stroke="#1B1B1B" stroke-linecap="round"/>
                         </svg>
                     </button>
@@ -58,7 +58,7 @@
                 <div id="sort-button-appliances" class="bg-white rounded-xl inline-flex flex-col relative">
                     <button onclick="toggleFilterDropdown('appliances')" class="p-4 flex gap-x-16 justify-center items-center relative">
                         <p>Appareils</p>
-                        <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-all duration-200 ease-in-out">
+                        <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition">
                             <path d="M1 1L7.5 7L14 1" stroke="#1B1B1B" stroke-linecap="round"/>
                         </svg>
                     </button>
@@ -80,7 +80,7 @@
                 <div id="sort-button-ustensils" class="bg-white rounded-xl inline-flex flex-col relative">
                     <button onclick="toggleFilterDropdown('ustensils')" class="p-4 flex gap-x-16 justify-center items-center relative">
                         <p>Ustensiles</p>
-                        <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-all duration-200 ease-in-out">
+                        <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition">
                             <path d="M1 1L7.5 7L14 1" stroke="#1B1B1B" stroke-linecap="round"/>
                         </svg>
                     </button>
@@ -102,7 +102,9 @@
             </div>
             <span class="font-display text-xl">1500 recettes</span>
         </nav>
-        <div id="recipes-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 mx-auto max-w-7xl">
+        <ul id="selected-filters" class="hidden flex-row flex-wrap gap-2 justify-start w-full mx-auto max-w-7xl text-sm">
+        </ul>
+        <div id="recipes-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 mx-auto max-w-7xl pt-10">
 
         </div>
     </main>
