@@ -1,4 +1,6 @@
-function recipeTemplate(recipe) {
+import { createDOMElement } from "./commons.js";
+
+export function recipeTemplate(recipe) {
     const { id, image, name, servings, ingredients, time, description, appliance, ustensils } = recipe;
 
     function getRecipeDOM() {
@@ -40,7 +42,7 @@ function recipeTemplate(recipe) {
     return { getRecipeDOM };
 }
 
-function filtersTemplate() {
+export function filtersTemplate() {
     const ingredientsList = [... new Set(recipes.map(recipe => recipe.ingredients.map(item => item.ingredient)).flat())];
     const appliancesList = [... new Set(recipes.map(recipe => recipe.appliance))];
     const ustensilsList = [... new Set(recipes.map(recipe => recipe.ustensils).flat())];
@@ -48,7 +50,7 @@ function filtersTemplate() {
     function createListDOM(items) {
         return items.map(item => {
             const input = createDOMElement("input", { type: "checkbox", id: item, name: item, class: "hidden peer"});
-            const label = createDOMElement("label", { for: item, class : "peer-checked:bg-yellow peer-checked:font-bold px-4 py-1.5 hover:bg-yellow block w-full cursor-pointer transition", onclick: `toggleFilter("${item}", true)` }, item);
+            const label = createDOMElement("label", { for: item, class : "peer-checked:bg-yellow peer-checked:font-bold px-4 py-1.5 hover:bg-yellow block w-full cursor-pointer transition filter-item" }, item);
             const filterCross = createDOMElement("img", { src: "./assets/icons/checkedFilterCross.svg", class: "absolute right-0 top-1/2 bottom-1/2 -translate-y-1/2 mx-3.5 pointer-events-none opacity-0 peer-checked:opacity-100 group-hover:peer-checked:opacity-50 transition" });
             const li = createDOMElement("li", { class: "group relative" });
             
@@ -68,7 +70,7 @@ function filtersTemplate() {
     function getSelectedFilterDOM(selectedFilter) {
         const selectedFilterText = createDOMElement("p", {}, selectedFilter);
         const filterCross = createDOMElement("img", { src: "./assets/icons/selectedFilterCross.svg", class: "group-hover:opacity-50 transition" });
-        const selectedFilterDOM = createDOMElement("li", { class: "bg-yellow inline-flex p-4 rounded-xl items-center gap-14 cursor-pointer group", onclick: `toggleFilter("${selectedFilter}", false)` });
+        const selectedFilterDOM = createDOMElement("li", { class: "bg-yellow inline-flex p-4 rounded-xl items-center gap-14 cursor-pointer group selected-filter-item", "data-filter": selectedFilter });
         
         selectedFilterDOM.append(selectedFilterText, filterCross);
         return selectedFilterDOM;

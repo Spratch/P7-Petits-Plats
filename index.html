@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./css/output.css" rel="stylesheet">
     <script src="./data/recipes.js"></script>
-    <script src="./js/commons.js"></script>
-    <script src="./js/templates.js"></script>
-    <script src="./js/script.js"></script>
+    <script type="module" src="./js/app.js"></script>
     <title>Les Petits Plats</title>
 </head>
 <body class="antialiased">
@@ -34,13 +32,13 @@
         <nav id="filters" class="flex flex-col-reverse md:flex-row gap-4 w-full place-content-between items-start md:items-center mx-auto max-w-7xl pb-5">
             <div class="flex flex-row flex-wrap md:flex-nowrap gap-4 md:gap-8 xl:gap-16">
                 <div id="sort-button-ingredients" class="bg-white rounded-xl inline-flex flex-col relative">
-                    <button onclick="toggleFilterDropdown('ingredients')" class="p-4 flex gap-x-16 justify-center items-center relative">
+                    <button class="p-4 flex gap-x-16 justify-center items-center relative filter-button" data-category="ingredients">
                         <p>Ingrédients</p>
                         <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition">
                             <path d="M1 1L7.5 7L14 1" stroke="#1B1B1B" stroke-linecap="round"/>
                         </svg>
                     </button>
-                    <div id="dropdown-ingredients" class="text-sm w-full hidden flex-col gap-4 absolute top-14 bg-white rounded-b-xl z-10">
+                    <div id="dropdown-ingredients" class="text-sm w-full hidden flex-col gap-4 absolute top-14 bg-white rounded-b-xl z-10 dropdown-content">
                         <form action="" class="relative flex items-center">
                             <label for="" class="hidden"></label>
                             <input type="text" class="w-full border border-light-grey rounded-sm p-2 mx-4 text-grey">
@@ -56,13 +54,13 @@
                     </div>
                 </div>
                 <div id="sort-button-appliances" class="bg-white rounded-xl inline-flex flex-col relative">
-                    <button onclick="toggleFilterDropdown('appliances')" class="p-4 flex gap-x-16 justify-center items-center relative">
+                    <button class="p-4 flex gap-x-16 justify-center items-center relative filter-button" data-category="appliances">
                         <p>Appareils</p>
                         <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition">
                             <path d="M1 1L7.5 7L14 1" stroke="#1B1B1B" stroke-linecap="round"/>
                         </svg>
                     </button>
-                    <div id="dropdown-appliances" class="text-sm w-full hidden flex-col gap-4 absolute top-14 bg-white rounded-b-xl z-10">
+                    <div id="dropdown-appliances" class="text-sm w-full hidden flex-col gap-4 absolute top-14 bg-white rounded-b-xl z-10 dropdown-content">
                         <form action="" class="relative flex items-center">
                             <label for="" class="hidden"></label>
                             <input type="text" class="w-full border border-light-grey rounded-sm p-2 mx-4 text-grey">
@@ -78,13 +76,13 @@
                     </div>
                 </div>
                 <div id="sort-button-ustensils" class="bg-white rounded-xl inline-flex flex-col relative">
-                    <button onclick="toggleFilterDropdown('ustensils')" class="p-4 flex gap-x-16 justify-center items-center relative">
+                    <button class="p-4 flex gap-x-16 justify-center items-center relative filter-button" data-category="ustensils">
                         <p>Ustensiles</p>
                         <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition">
                             <path d="M1 1L7.5 7L14 1" stroke="#1B1B1B" stroke-linecap="round"/>
                         </svg>
                     </button>
-                    <div id="dropdown-ustensils" class="text-sm w-full hidden flex-col gap-4 absolute top-14 bg-white rounded-b-xl z-10">
+                    <div id="dropdown-ustensils" class="text-sm w-full hidden flex-col gap-4 absolute top-14 bg-white rounded-b-xl z-10 dropdown-content">
                         <form action="" class="relative flex items-center">
                             <label for="" class="hidden"></label>
                             <input type="text" class="w-full border border-light-grey rounded-sm p-2 mx-4 text-grey">

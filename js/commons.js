@@ -6,7 +6,7 @@
  * @param {string} [textContent] - Optional text content for the element.
  * @returns {HTMLElement} The newly created DOM element.
  */
-function createDOMElement(tag, attributes = {}, textContent) {
+export function createDOMElement(tag, attributes = {}, textContent) {
 	// Tag
 	const element = document.createElement(tag);
 	// Attributes
