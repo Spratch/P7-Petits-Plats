@@ -20,3 +20,7 @@ export function createDOMElement(tag, attributes = {}, textContent) {
 
 	return element;
 }
+
+export function toSentenceCase(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}

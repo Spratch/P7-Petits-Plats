@@ -1,4 +1,4 @@
-import { createDOMElement } from "./commons.js";
+import { createDOMElement, toSentenceCase } from "./commons.js";
 
 export function recipeTemplate(recipe) {
     const { id, image, name, servings, ingredients, time, description, appliance, ustensils } = recipe;
@@ -43,9 +43,9 @@ export function recipeTemplate(recipe) {
 }
 
 export function filtersTemplate() {
-    const ingredientsList = [... new Set(recipes.map(recipe => recipe.ingredients.map(item => item.ingredient)).flat())];
-    const appliancesList = [... new Set(recipes.map(recipe => recipe.appliance))];
-    const ustensilsList = [... new Set(recipes.map(recipe => recipe.ustensils).flat())];
+    const ingredientsList = [... new Set(recipes.map(recipe => recipe.ingredients.map(item => toSentenceCase(item.ingredient))).flat())];
+    const appliancesList = [... new Set(recipes.map(recipe => toSentenceCase(recipe.appliance)))];
+    const ustensilsList = [... new Set(recipes.map(recipe => recipe.ustensils.map(ustensil => toSentenceCase(ustensil))).flat())];
 
     function createListDOM(items) {
         return items.map(item => {
