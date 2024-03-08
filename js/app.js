@@ -2,10 +2,6 @@ import { displayFiltersLists, toggleFilter, toggleFilterDropdown } from "./filte
 import { initInteractions } from "./interactions.js";
 import { displayRecipes } from "./recipes.js";
 
-// OnClick handlers
-window.toggleFilterDropdown = toggleFilterDropdown;
-window.toggleFilter = toggleFilter;
-
 function init() {
     displayRecipes();
     displayFiltersLists();
