@@ -1,9 +1,10 @@
 import { recipeTemplate } from "./templates.js";
 
-export function displayRecipes(){
+export function displayRecipes(recipesList = recipes){
     const recipesGrid = document.getElementById("recipes-grid")
-
-    recipes.forEach((recipe) => {
+    recipesGrid.innerHTML = '';
+    
+    recipesList.forEach((recipe) => {
         const recipeModel = recipeTemplate(recipe);
         const article = recipeModel.getRecipeDOM();
 

@@ -1,4 +1,6 @@
-import { toggleDropdownClasses, toggleFilter, toggleFilterDropdown } from "./filters.js";
+import { displayFiltersLists, toggleDropdownClasses, toggleFilter, toggleFilterDropdown } from "./filters.js";
+import { filterFromSearchbar } from "./filters/index.js";
+import { displayRecipes } from "./recipes.js";
 
 // Click listener on filter list dropdown buttons
 function setupFilterDropdownEvents() {
@@ -52,8 +54,28 @@ export function closeDropdownsOnEscape(event) {
     }
 }
 
+// Keydown listener in main searchbar
+function setupSearchbarKeydownEvents() {
+    const searchbarInput = document.getElementById("searchbar");
+
+    searchbarInput.addEventListener('input', () => {
+        const inputValue = searchbarInput.value;
+        const minimumValueLength = 3;
+
+        if (inputValue.length >= minimumValueLength) {
+            console.log(inputValue);
+            const updatedRecipesList = filterFromSearchbar(inputValue);
+            console.log(updatedRecipesList);
+
+            displayRecipes(updatedRecipesList);
+            displayFiltersLists(updatedRecipesList);        
+        }    
+    });
+}
+
 // Initial interactions
 export function initInteractions() {
     setupFilterDropdownEvents();
     setupFilterItemEvents();
+    setupSearchbarKeydownEvents();
 }

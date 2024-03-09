@@ -84,12 +84,15 @@ export function toggleFilterDropdown(category) {
     document.addEventListener('keydown', closeDropdownsOnEscape);
 }
 
-export function displayFiltersLists() {
+export function displayFiltersLists(recipesList = recipes) {
     const ulIngredients = document.querySelector("#dropdown-ingredients ul");
     const ulAppliances = document.querySelector("#dropdown-appliances ul");
     const ulUstensils = document.querySelector("#dropdown-ustensils ul");
+    ulIngredients.innerHTML = '';
+    ulAppliances.innerHTML = '';
+    ulAppliances.innerHTML = '';
 
-    const { ingredientsListDOM, appliancesListDOM, ustensilsListDOM } = filtersTemplate().getFilterListDOM();
+    const { ingredientsListDOM, appliancesListDOM, ustensilsListDOM } = filtersTemplate(recipesList).getFilterListDOM();
 
     ingredientsListDOM.forEach((li) => {
         ulIngredients.append(li);

@@ -42,10 +42,10 @@ export function recipeTemplate(recipe) {
     return { getRecipeDOM };
 }
 
-export function filtersTemplate() {
-    const ingredientsList = [... new Set(recipes.map(recipe => recipe.ingredients.map(item => toSentenceCase(item.ingredient))).flat())];
-    const appliancesList = [... new Set(recipes.map(recipe => toSentenceCase(recipe.appliance)))];
-    const ustensilsList = [... new Set(recipes.map(recipe => recipe.ustensils.map(ustensil => toSentenceCase(ustensil))).flat())];
+export function filtersTemplate(recipesList = recipes) {
+    const ingredientsList = [... new Set(recipesList.map(recipe => recipe.ingredients.map(item => toSentenceCase(item.ingredient))).flat())];
+    const appliancesList = [... new Set(recipesList.map(recipe => toSentenceCase(recipe.appliance)))];
+    const ustensilsList = [... new Set(recipesList.map(recipe => recipe.ustensils.map(ustensil => toSentenceCase(ustensil))).flat())];
 
     function createListDOM(items, category) {
         return items.map(item => {
