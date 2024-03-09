@@ -13,16 +13,19 @@ function setupFilterDropdownEvents() {
 // Click listener on dropdown filter list items
 function setupFilterItemEvents() {
     document.querySelectorAll(".filter-item").forEach((label) => {
-        const itemValue = label.getAttribute("for");
-        label.addEventListener('click', () => toggleFilter(itemValue, true));
+        const itemName = label.textContent;
+        const itemId = label.getAttribute("for");
+        label.addEventListener('click', () => toggleFilter(itemName, itemId, true));
     });
 }
 
 // Click listener on selecter filter list items
 export function setupSelectedFilterItemEvents() {
     document.querySelectorAll(".selected-filter-item").forEach((item) => {
-        const itemValue = item.dataset.filter;
-        item.addEventListener('click', () => toggleFilter(itemValue, false));
+        const itemName = item.dataset.filterName;
+        const itemId = item.dataset.filterId;
+
+        item.addEventListener('click', () => toggleFilter(itemName, itemId, false));
     });
 }
 

@@ -25,7 +25,7 @@ function displaySelectedFilters() {
 }
 
 function unselectFilter(filterToRemove) {
-    selectedFiltersList = selectedFiltersList.filter(item => item !== filterToRemove);
+    selectedFiltersList = selectedFiltersList.filter(item => item.filterId !== filterToRemove.filterId);
     displaySelectedFilters();
 }
 
@@ -34,9 +34,10 @@ function selectFilter(filterToAdd) {
     displaySelectedFilters();
 }
 
-export function toggleFilter(filterToToggle, fromCheckbox) {
-    const checkedFilter = document.getElementById(filterToToggle);
+export function toggleFilter(filterName, filterId, fromCheckbox) {
+    const checkedFilter = document.getElementById(filterId);
     const isChecked = checkedFilter.checked;
+    const filterToToggle = { filterName, filterId };
     
     if (isChecked) {
         unselectFilter(filterToToggle);

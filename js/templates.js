@@ -47,10 +47,11 @@ export function filtersTemplate() {
     const appliancesList = [... new Set(recipes.map(recipe => toSentenceCase(recipe.appliance)))];
     const ustensilsList = [... new Set(recipes.map(recipe => recipe.ustensils.map(ustensil => toSentenceCase(ustensil))).flat())];
 
-    function createListDOM(items) {
+    function createListDOM(items, category) {
         return items.map(item => {
-            const input = createDOMElement("input", { type: "checkbox", id: item, name: item, class: "hidden peer"});
-            const label = createDOMElement("label", { for: item, class : "peer-checked:bg-yellow peer-checked:font-bold px-4 py-1.5 hover:bg-yellow block w-full cursor-pointer transition filter-item" }, item);
+            const itemId = `${category}-${item.replace(/\s+/g, '-').toLowerCase()}`;
+            const input = createDOMElement("input", { type: "checkbox", id: itemId, name: item, class: "hidden peer"});
+            const label = createDOMElement("label", { for: itemId, class : "peer-checked:bg-yellow peer-checked:font-bold px-4 py-1.5 hover:bg-yellow block w-full cursor-pointer transition filter-item" }, item);
             const filterCross = createDOMElement("img", { src: "./assets/icons/checkedFilterCross.svg", class: "absolute right-0 top-1/2 bottom-1/2 -translate-y-1/2 mx-3.5 pointer-events-none opacity-0 peer-checked:opacity-100 group-hover:peer-checked:opacity-50 transition" });
             const li = createDOMElement("li", { class: "group relative" });
             
@@ -60,17 +61,19 @@ export function filtersTemplate() {
     }
     
     function getFilterListDOM() {
-        const ingredientsListDOM = createListDOM(ingredientsList);
-        const appliancesListDOM = createListDOM(appliancesList);
-        const ustensilsListDOM = createListDOM(ustensilsList);
+        const ingredientsListDOM = createListDOM(ingredientsList, "ingredient");
+        const appliancesListDOM = createListDOM(appliancesList, "appliance");
+        const ustensilsListDOM = createListDOM(ustensilsList, "ustensil");
     
         return { ingredientsListDOM, appliancesListDOM, ustensilsListDOM };
     }
 
     function getSelectedFilterDOM(selectedFilter) {
-        const selectedFilterText = createDOMElement("p", {}, selectedFilter);
+        const { filterName, filterId } = selectedFilter;
+
+        const selectedFilterText = createDOMElement("p", {}, filterName);
         const filterCross = createDOMElement("img", { src: "./assets/icons/selectedFilterCross.svg", class: "group-hover:opacity-50 transition" });
-        const selectedFilterDOM = createDOMElement("li", { class: "bg-yellow inline-flex p-4 rounded-xl items-center gap-14 cursor-pointer group selected-filter-item", "data-filter": selectedFilter });
+        const selectedFilterDOM = createDOMElement("li", { class: "bg-yellow inline-flex p-4 rounded-xl items-center gap-14 cursor-pointer group selected-filter-item", "data-filter-id": filterId, "data-filter-name": filterName });
         
         selectedFilterDOM.append(selectedFilterText, filterCross);
         return selectedFilterDOM;
