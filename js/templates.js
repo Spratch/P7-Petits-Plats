@@ -47,12 +47,27 @@ export function filtersTemplate(recipesList = recipes) {
     const appliancesList = [... new Set(recipesList.map(recipe => toSentenceCase(recipe.appliance)))];
     const ustensilsList = [... new Set(recipesList.map(recipe => recipe.ustensils.map(ustensil => toSentenceCase(ustensil))).flat())];
 
-    function createListDOM(items, category) {
+    function createListDOM(items, category, selectedFiltersIds = []) {
         return items.map(item => {
             const itemId = `${category}-${item.replace(/\s+/g, '-').toLowerCase()}`;
-            const input = createDOMElement("input", { type: "checkbox", id: itemId, name: item, class: "hidden peer"});
-            const label = createDOMElement("label", { for: itemId, class : "peer-checked:bg-yellow peer-checked:font-bold px-4 py-1.5 hover:bg-yellow block w-full cursor-pointer transition filter-item" }, item);
-            const filterCross = createDOMElement("img", { src: "./assets/icons/checkedFilterCross.svg", class: "absolute right-0 top-1/2 bottom-1/2 -translate-y-1/2 mx-3.5 pointer-events-none opacity-0 peer-checked:opacity-100 group-hover:peer-checked:opacity-50 transition" });
+            const isChecked = selectedFiltersIds.includes(itemId);
+            const input = createDOMElement("input", { 
+                type: "checkbox", 
+                id: itemId, 
+                name: item, 
+                class: "hidden peer",
+            });
+            if (isChecked) {
+                input.setAttribute("checked", "true");
+            }
+            const label = createDOMElement("label", { 
+                for: itemId, 
+                class : "peer-checked:bg-yellow peer-checked:font-bold px-4 py-1.5 hover:bg-yellow block w-full cursor-pointer transition filter-item" 
+            }, item);
+            const filterCross = createDOMElement("img", { 
+                src: "./assets/icons/checkedFilterCross.svg", 
+                class: "absolute right-0 top-1/2 bottom-1/2 -translate-y-1/2 mx-3.5 pointer-events-none opacity-0 peer-checked:opacity-100 group-hover:peer-checked:opacity-50 transition" 
+            });
             const li = createDOMElement("li", { class: "group relative" });
             
             li.append(input, label, filterCross);
@@ -60,10 +75,11 @@ export function filtersTemplate(recipesList = recipes) {
             });
     }
     
-    function getFilterListDOM() {
-        const ingredientsListDOM = createListDOM(ingredientsList, "ingredient");
-        const appliancesListDOM = createListDOM(appliancesList, "appliance");
-        const ustensilsListDOM = createListDOM(ustensilsList, "ustensil");
+    function getFilterListDOM(selectedFiltersList) {
+        const selectedFiltersIds = selectedFiltersList.map((filter) => filter.filterId);
+        const ingredientsListDOM = createListDOM(ingredientsList, "ingredient", selectedFiltersIds);
+        const appliancesListDOM = createListDOM(appliancesList, "appliance", selectedFiltersIds);
+        const ustensilsListDOM = createListDOM(ustensilsList, "ustensil", selectedFiltersIds);
     
         return { ingredientsListDOM, appliancesListDOM, ustensilsListDOM };
     }

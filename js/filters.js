@@ -1,4 +1,4 @@
-import { closeDropdownsOnClickOutside, closeDropdownsOnEscape, setupSelectedFilterItemEvents } from "./interactions.js";
+import { closeDropdownsOnClickOutside, closeDropdownsOnEscape, setupFilterItemEvents, setupSelectedFilterItemEvents } from "./interactions.js";
 import { filtersTemplate } from "./templates.js";
 
 let selectedFiltersList = [];
@@ -38,7 +38,7 @@ export function toggleFilter(filterName, filterId, fromCheckbox) {
     const checkedFilter = document.getElementById(filterId);
     const isChecked = checkedFilter.checked;
     const filterToToggle = { filterName, filterId };
-    
+    console.log("toggleFilter", filterToToggle);
     if (isChecked) {
         unselectFilter(filterToToggle);
         
@@ -90,18 +90,19 @@ export function displayFiltersLists(recipesList = recipes) {
     const ulUstensils = document.querySelector("#dropdown-ustensils ul");
     ulIngredients.innerHTML = '';
     ulAppliances.innerHTML = '';
-    ulAppliances.innerHTML = '';
+    ulUstensils.innerHTML = '';
 
-    const { ingredientsListDOM, appliancesListDOM, ustensilsListDOM } = filtersTemplate(recipesList).getFilterListDOM();
+    const { ingredientsListDOM, appliancesListDOM, ustensilsListDOM } = filtersTemplate(recipesList).getFilterListDOM(selectedFiltersList);
 
     ingredientsListDOM.forEach((li) => {
         ulIngredients.append(li);
     });
-
     appliancesListDOM.forEach((li) => {
         ulAppliances.append(li);
     });
     ustensilsListDOM.forEach((li) => {
         ulUstensils.append(li);
     });
+
+    setupFilterItemEvents();
 }

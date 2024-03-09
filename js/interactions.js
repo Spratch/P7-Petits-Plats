@@ -13,11 +13,13 @@ function setupFilterDropdownEvents() {
 }
 
 // Click listener on dropdown filter list items
-function setupFilterItemEvents() {
+export function setupFilterItemEvents() {
     document.querySelectorAll(".filter-item").forEach((label) => {
         const itemName = label.textContent;
         const itemId = label.getAttribute("for");
-        label.addEventListener('click', () => toggleFilter(itemName, itemId, true));
+        label.addEventListener('click', () => {
+            console.log("click on", itemName);
+            toggleFilter(itemName, itemId, true)});
     });
 }
 
@@ -76,6 +78,5 @@ function setupSearchbarKeydownEvents() {
 // Initial interactions
 export function initInteractions() {
     setupFilterDropdownEvents();
-    setupFilterItemEvents();
     setupSearchbarKeydownEvents();
 }
