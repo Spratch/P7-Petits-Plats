@@ -59,15 +59,21 @@ export function closeDropdownsOnEscape(event) {
 // Keydown listener in main searchbar
 function setupSearchbarKeydownEvents() {
     const searchbarInput = document.getElementById("searchbar");
+    const resetButton = document.getElementById("main-reset");
 
     searchbarInput.addEventListener('input', () => {
         const inputValue = searchbarInput.value;
         const minimumValueLength = 3;
 
+        // Displays cross
+        if (inputValue.length >= 1) {
+            resetButton.classList.remove("opacity-0", "pointer-events-none");
+        } else {
+            resetButton.classList.add("opacity-0", "pointer-events-none");
+        }
+        // Updates recipes and filters lists
         if (inputValue.length >= minimumValueLength) {
-            console.log(inputValue);
             const updatedRecipesList = filterFromSearchbar(inputValue);
-            console.log(updatedRecipesList);
 
             displayRecipes(updatedRecipesList);
             displayFiltersLists(updatedRecipesList);        

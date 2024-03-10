@@ -1043,6 +1043,10 @@ video {
   background-image: url('../assets/images/lampos-aritonang-24gR_9lCdes-unsplash.jpeg');
 }
 
+.bg-\[url\(\'\.\/assets\/icons\/mainSearchbarCross\.svg\'\)\]{
+  background-image: url('./assets/icons/mainSearchbarCross.svg');
+}
+
 .bg-cover{
   background-size: cover;
 }

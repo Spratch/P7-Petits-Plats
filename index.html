@@ -18,12 +18,19 @@
                 <label for="searchbar"><h1 class="uppercase text-yellow font-display text-4xl md:text-5xl leading-tight text-center p-4 md:p-11">Cherchez parmi plus de 1500 recettes du quotidien, simples et délicieuses</h1></label>
                 <div class="relative w-full">
                     <input type="text" name="" id="searchbar" class="w-full py-6 px-9 rounded-xl" placeholder="Rechercher une recette, un ingrédient, …">
-                    <button type="submit" class="absolute bg-black stroke-white right-0 m-2.5 rounded-lg p-3 hover:bg-yellow hover:stroke-black">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                            <circle cx="10" cy="10" r="9.5"/>
-                            <line x1="18.3536" y1="18.6464" x2="27.3536" y2="27.6464"/>
-                        </svg>
-                    </button>
+                    <div class="absolute right-0 m-2.5 flex flex-row items-center gap-3 top-0">
+                        <button id="main-reset" type="reset" class="opacity-0 pointer-events-none transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                                <path d="M15 15L8.5 8.5M8.5 8.5L2 2M8.5 8.5L15 2M8.5 8.5L2 15" stroke="#7A7A7A" stroke-width="2.16667" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button type="submit" class="bg-black stroke-white rounded-lg p-3 hover:bg-yellow hover:stroke-black">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                                <circle cx="10" cy="10" r="9.5"/>
+                                <line x1="18.3536" y1="18.6464" x2="27.3536" y2="27.6464"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>
