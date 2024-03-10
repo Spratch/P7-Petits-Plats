@@ -8,7 +8,7 @@
     <script type="module" src="./js/app.js"></script>
     <title>Les Petits Plats</title>
 </head>
-<body class="antialiased">
+<body class="antialiased flex flex-col min-h-screen">
     <header class="absolute top-0 left-0 w-full pt-12 px-14 z-10 flex flex-col items-center md:block">
         <img src="../assets/logo/logo.svg" alt="Les petits plats" class="h-6">
     </header>
@@ -28,7 +28,7 @@
             </form>
         </div>
     </section>
-    <main class="bg-offwhite w-full py-5 px-6 md:px-8 xl:px-24 flex flex-col items-center">
+    <main class="bg-offwhite w-full py-5 px-6 md:px-8 xl:px-24 flex flex-col items-center flex-grow">
         <nav id="filters" class="flex flex-col-reverse md:flex-row gap-4 w-full place-content-between items-start md:items-center mx-auto max-w-7xl pb-5">
             <div class="flex flex-row flex-wrap md:flex-nowrap gap-4 md:gap-8 xl:gap-16">
                 <div id="sort-button-ingredients" class="bg-white rounded-xl inline-flex flex-col relative">
@@ -102,7 +102,7 @@
         </nav>
         <ul id="selected-filters" class="hidden flex-row flex-wrap gap-2 justify-start w-full mx-auto max-w-7xl text-sm">
         </ul>
-        <div id="recipes-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 mx-auto max-w-7xl pt-10">
+        <div id="recipes-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 mx-auto max-w-7xl py-10 min-h-full">
 
         </div>
     </main>

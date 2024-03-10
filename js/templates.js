@@ -1,6 +1,6 @@
 import { createDOMElement, toSentenceCase } from "./commons.js";
 
-export function recipeTemplate(recipe) {
+export function recipeTemplate(recipe = {}) {
     const { id, image, name, servings, ingredients, time, description, appliance, ustensils } = recipe;
 
     function getRecipeDOM() {
@@ -39,7 +39,16 @@ export function recipeTemplate(recipe) {
         return article;
     }
 
-    return { getRecipeDOM };
+    function getNoRecipeMessageDOM() {
+        const emptyRecipeListSection = createDOMElement("section", { id: "no-recipe", class: "w-full h-full flex flex-col gap-7 items-center justify-center col-span-full pb"});
+        const image = createDOMElement("img", { src: "./assets/icons/noResult.png", width: "75" });
+        const message = createDOMElement("h2", { class: "font-display text-lg" }, "Aucun résultat pour cette recherche.");
+
+        emptyRecipeListSection.append(image, message);
+        return emptyRecipeListSection;
+    }
+
+    return { getRecipeDOM, getNoRecipeMessageDOM };
 }
 
 export function filtersTemplate(recipesList = recipes) {

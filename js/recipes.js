@@ -5,9 +5,15 @@ export function displayRecipes(recipesList = recipes){
     recipesGrid.innerHTML = '';
     
     recipesList.forEach((recipe) => {
-        const recipeModel = recipeTemplate(recipe);
-        const article = recipeModel.getRecipeDOM();
+        const article = recipeTemplate(recipe).getRecipeDOM();
 
         recipesGrid.append(article);
     });
+
+    // Message for empty list
+    if (recipesList.length == 0) {
+        const noRecipeMessageDOM = recipeTemplate().getNoRecipeMessageDOM();
+
+        recipesGrid.append(noRecipeMessageDOM);
+    }
 }
