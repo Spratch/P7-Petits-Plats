@@ -47,14 +47,21 @@
                     </button>
                     <div id="dropdown-ingredients" class="overflow-hidden text-sm w-full hidden flex-col gap-4 absolute top-14 bg-white rounded-b-xl z-10 dropdown-content">
                         <form action="" class="relative flex items-center">
-                            <label for="" class="hidden"></label>
-                            <input type="text" class="w-full border border-light-grey rounded-sm p-2 mx-4 text-grey">
-                            <button type="submit" class="absolute stroke-grey hover:stroke-light-grey right-0 m-2 mr-6">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                    <circle cx="5" cy="5" r="4.75" stroke-width="0.5"/>
-                                    <line x1="9.17678" y1="9.32322" x2="13.6768" y2="13.8232" stroke-width="0.5"/>
-                                </svg>
-                            </button>
+                            <label for="ingredients-search" class="hidden"></label>
+                            <input id="ingredients-search" type="text" class="w-full border border-light-grey rounded-sm p-2 mx-4 text-grey">
+                            <div class="absolute flex items-center right-0 m-2 mr-6 gap-2.5">
+                                <button id="ingredients-reset" type="reset" class="opacity-0 pointer-events-none transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                                        <path d="M7 7L4 4M4 4L1 1M4 4L7 1M4 4L1 7" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button type="submit" class="stroke-grey hover:stroke-light-grey">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                        <circle cx="5" cy="5" r="4.75" stroke-width="0.5"/>
+                                        <line x1="9.17678" y1="9.32322" x2="13.6768" y2="13.8232" stroke-width="0.5"/>
+                                    </svg>
+                                </button>
+                            </div>
                         </form>
                         <ul class="flex flex-col max-h-44 overflow-y-scroll">
                         </ul>
@@ -69,14 +76,21 @@
                     </button>
                     <div id="dropdown-appliances" class="overflow-hidden text-sm w-full hidden flex-col gap-4 absolute top-14 bg-white rounded-b-xl z-10 dropdown-content">
                         <form action="" class="relative flex items-center">
-                            <label for="" class="hidden"></label>
-                            <input type="text" class="w-full border border-light-grey rounded-sm p-2 mx-4 text-grey">
-                            <button type="submit" class="absolute stroke-grey hover:stroke-light-grey right-0 m-2 mr-6">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                    <circle cx="5" cy="5" r="4.75" stroke-width="0.5"/>
-                                    <line x1="9.17678" y1="9.32322" x2="13.6768" y2="13.8232" stroke-width="0.5"/>
-                                </svg>
-                            </button>
+                            <label for="appliances-search" class="hidden"></label>
+                            <input id="appliances-search" type="text" class="w-full border border-light-grey rounded-sm p-2 mx-4 text-grey">
+                            <div class="absolute flex items-center right-0 m-2 mr-6 gap-2.5">
+                                <button id="appliances-reset" type="reset" class="opacity-0 pointer-events-none transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                                        <path d="M7 7L4 4M4 4L1 1M4 4L7 1M4 4L1 7" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button type="submit" class="stroke-grey hover:stroke-light-grey">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                        <circle cx="5" cy="5" r="4.75" stroke-width="0.5"/>
+                                        <line x1="9.17678" y1="9.32322" x2="13.6768" y2="13.8232" stroke-width="0.5"/>
+                                    </svg>
+                                </button>
+                            </div>
                         </form>
                         <ul class="flex flex-col max-h-44 overflow-y-scroll">
                         </ul>
@@ -91,21 +105,28 @@
                     </button>
                     <div id="dropdown-ustensils" class="overflow-hidden text-sm w-full hidden flex-col gap-4 absolute top-14 bg-white rounded-b-xl z-10 dropdown-content">
                         <form action="" class="relative flex items-center">
-                            <label for="" class="hidden"></label>
-                            <input type="text" class="w-full border border-light-grey rounded-sm p-2 mx-4 text-grey">
-                            <button type="submit" class="absolute stroke-grey hover:stroke-light-grey right-0 m-2 mr-6">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                    <circle cx="5" cy="5" r="4.75" stroke-width="0.5"/>
-                                    <line x1="9.17678" y1="9.32322" x2="13.6768" y2="13.8232" stroke-width="0.5"/>
-                                </svg>
-                            </button>
+                            <label for="ustensils-search" class="hidden"></label>
+                            <input id="ustensils-search" type="text" class="w-full border border-light-grey rounded-sm p-2 mx-4 text-grey">
+                            <div class="absolute flex items-center right-0 m-2 mr-6 gap-2.5">
+                                <button id="ustensils-reset" type="reset" class="opacity-0 pointer-events-none transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                                        <path d="M7 7L4 4M4 4L1 1M4 4L7 1M4 4L1 7" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button type="submit" class="stroke-grey hover:stroke-light-grey">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                        <circle cx="5" cy="5" r="4.75" stroke-width="0.5"/>
+                                        <line x1="9.17678" y1="9.32322" x2="13.6768" y2="13.8232" stroke-width="0.5"/>
+                                    </svg>
+                                </button>
+                            </div>
                         </form>
                         <ul class="flex flex-col max-h-44 overflow-y-scroll">
                         </ul>
                     </div>
                 </div>
             </div>
-            <span class="font-display text-xl">1500 recettes</span>
+            <span id="recipes-number" class="font-display text-xl"></span>
         </nav>
         <ul id="selected-filters" class="hidden flex-row flex-wrap gap-2 justify-start w-full mx-auto max-w-7xl text-sm">
         </ul>

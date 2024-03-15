@@ -16,4 +16,8 @@ export function displayRecipes(recipesList = recipes){
 
         recipesGrid.append(noRecipeMessageDOM);
     }
+
+    // Display total recipes number
+    const recipesNumber = document.getElementById("recipes-number");
+    recipesNumber.innerText = `${recipesList.length} recettes`;
 }

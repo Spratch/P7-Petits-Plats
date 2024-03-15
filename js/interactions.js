@@ -1,6 +1,5 @@
-import { displayFiltersLists, toggleDropdownClasses, toggleFilter, toggleFilterDropdown } from "./filters.js";
-import { filterFromSearchbar } from "./filters/index.js";
-import { displayRecipes } from "./recipes.js";
+import { toggleDropdownClasses, toggleFilter, toggleFilterDropdown } from "./filters.js";
+import { displayUpdatedLists, filterFiltersFromSearch, filterFromSearchbar, resetFilterSearch } from "./filters/index.js";
 
 // Click listener on filter list dropdown buttons
 function setupFilterDropdownEvents() {
@@ -11,15 +10,16 @@ function setupFilterDropdownEvents() {
         });
     });
 }
-
+let filterSelectorListeners = {};
 // Click listener on dropdown filter list items
 export function setupFilterItemEvents() {
     document.querySelectorAll(".filter-item").forEach((label) => {
         const itemName = label.textContent;
         const itemId = label.getAttribute("for");
+
         label.addEventListener('click', () => {
-            console.log("click on", itemName);
-            toggleFilter(itemName, itemId, true)});
+            toggleFilter(itemName, itemId, true) 
+        });
     });
 }
 
@@ -56,43 +56,78 @@ export function closeDropdownsOnEscape(event) {
     }
 }
 
+// Reset buttons
+function setupResetButtonsEvents(input, resetButton) {
+    const inputValue = input.value;
+
+    // Displays cross
+    if (inputValue.length >= 1) {
+        resetButton.classList.remove("opacity-0", "pointer-events-none");
+    }
+    // Reset recipes list
+    if (inputValue.length == 0) {
+        resetInput();
+    }
+    resetButton.addEventListener('click', resetInput);
+
+    function resetInput() {
+        resetButton.classList.add("opacity-0", "pointer-events-none");
+        if (input.id == "searchbar") {
+            displayUpdatedLists();
+        } else {
+            const filterType = input.id.split("-")[0];
+            const filtersList = document.querySelector(`#dropdown-${filterType} ul`);
+            const filtersItems = Array.from(filtersList.getElementsByTagName("li"));        
+            resetFilterSearch(filtersItems);
+        }
+    }
+}
+
 // Keydown listener in main searchbar
-function setupSearchbarKeydownEvents() {
+function setupMainSearchbarEvents() {
     const searchbarInput = document.getElementById("searchbar");
     const resetButton = document.getElementById("main-reset");
 
     searchbarInput.addEventListener('input', () => {
+        setupResetButtonsEvents(searchbarInput, resetButton);
+
+        // Updates recipes and filters lists
         const inputValue = searchbarInput.value;
         const minimumValueLength = 3;
-
-        // Displays cross
-        if (inputValue.length >= 1) {
-            resetButton.classList.remove("opacity-0", "pointer-events-none");
-        }
-        // Updates recipes and filters lists
         if (inputValue.length >= minimumValueLength) {
             const updatedRecipesList = filterFromSearchbar(inputValue);
             displayUpdatedLists(updatedRecipesList);
         }
-        // Reset recipes list
-        if (inputValue.length == 0) {
-            resetButton.classList.add("opacity-0", "pointer-events-none");
-            displayUpdatedLists();
-        }
-        resetButton.addEventListener('click', () => {
-            resetButton.classList.add("opacity-0", "pointer-events-none");
-            displayUpdatedLists();
+    });
+}
+
+function setupFilterSearchEvents() {
+    const filterTypes = ["ingredients", "appliances", "ustensils"];
+    filterTypes.forEach((filterType) => {
+        const searchInput = document.getElementById(`${filterType}-search`);
+        const resetButton = document.getElementById(`${filterType}-reset`);
+        const filtersList = document.querySelector(`#dropdown-${filterType} ul`);
+
+        searchInput.addEventListener('input', () => {
+            setupResetButtonsEvents(searchInput, resetButton);
+
+            // Updates filter list
+            const inputValue = searchInput.value;
+            const minimumValueLength = 3;
+            if (inputValue.length >= minimumValueLength) {
+                const filtersItems = Array.from(filtersList.getElementsByTagName("li"));
+                filterFiltersFromSearch(inputValue, filtersItems);
+                // const updatedFiltersList = filterFiltersFromSearch(inputValue, filtersItems);
+                // filtersList.innerHTML = updatedFiltersList;
+            }
         });
     });
 }
 
-export function displayUpdatedLists(updatedRecipesList = recipes) {
-    displayRecipes(updatedRecipesList);
-    displayFiltersLists(updatedRecipesList);
-}
 
 // Initial interactions
 export function initInteractions() {
     setupFilterDropdownEvents();
-    setupSearchbarKeydownEvents();
+    setupMainSearchbarEvents();
+    setupFilterSearchEvents();
 }
