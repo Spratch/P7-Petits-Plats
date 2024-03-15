@@ -68,17 +68,27 @@ function setupSearchbarKeydownEvents() {
         // Displays cross
         if (inputValue.length >= 1) {
             resetButton.classList.remove("opacity-0", "pointer-events-none");
-        } else {
-            resetButton.classList.add("opacity-0", "pointer-events-none");
         }
         // Updates recipes and filters lists
         if (inputValue.length >= minimumValueLength) {
             const updatedRecipesList = filterFromSearchbar(inputValue);
-
-            displayRecipes(updatedRecipesList);
-            displayFiltersLists(updatedRecipesList);        
-        }    
+            displayUpdatedLists(updatedRecipesList);
+        }
+        // Reset recipes list
+        if (inputValue.length == 0) {
+            resetButton.classList.add("opacity-0", "pointer-events-none");
+            displayUpdatedLists();
+        }
+        resetButton.addEventListener('click', () => {
+            resetButton.classList.add("opacity-0", "pointer-events-none");
+            displayUpdatedLists();
+        });
     });
+}
+
+export function displayUpdatedLists(updatedRecipesList = recipes) {
+    displayRecipes(updatedRecipesList);
+    displayFiltersLists(updatedRecipesList);
 }
 
 // Initial interactions
