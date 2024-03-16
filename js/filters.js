@@ -79,6 +79,10 @@ export function toggleFilterDropdown(category) {
     // Opens clicked dropdown
     toggleDropdownClasses(button);
 
+    // Focus inside search input
+    const input = document.getElementById(`${category}-search`);
+    input.focus();
+
     // Closes dropdown if user click elsewhere or press escape
     document.addEventListener('click', closeDropdownsOnClickOutside);
     document.addEventListener('keydown', closeDropdownsOnEscape);

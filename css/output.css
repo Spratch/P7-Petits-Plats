@@ -904,10 +904,6 @@ video {
   justify-content: center;
 }
 
-.gap-1{
-  gap: 0.25rem;
-}
-
 .gap-12{
   gap: 3rem;
 }
@@ -918,6 +914,10 @@ video {
 
 .gap-2{
   gap: 0.5rem;
+}
+
+.gap-2\.5{
+  gap: 0.625rem;
 }
 
 .gap-3{
@@ -938,10 +938,6 @@ video {
 
 .gap-8{
   gap: 2rem;
-}
-
-.gap-2\.5{
-  gap: 0.625rem;
 }
 
 .gap-x-16{
