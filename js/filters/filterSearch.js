@@ -10,10 +10,6 @@ export function filterFiltersFromSearch(inputValueSource, filtersItems) {
             listItem.style.display = "none"
         }
     });
-    // return filtersItems
-    //     .filter((listItem) => checkName(listItem.innerHTML))
-    //     .map((listItem) => listItem.outerHTML)
-    //     .join('');
 }
 
 export function resetFilterSearch(filtersItems) {

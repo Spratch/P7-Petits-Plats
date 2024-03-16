@@ -1,3 +1,4 @@
+import { displayUpdatedLists, filterFromSelectedFilters } from "./filters/index.js";
 import { closeDropdownsOnClickOutside, closeDropdownsOnEscape, setupFilterItemEvents, setupSelectedFilterItemEvents } from "./interactions.js";
 import { filtersTemplate } from "./templates.js";
 
@@ -22,6 +23,10 @@ function displaySelectedFilters() {
         selectedFiltersUl.classList.remove("flex");
     }
     setupSelectedFilterItemEvents();
+    
+    // Filter recipes
+    const updatedRecipesList = filterFromSelectedFilters(selectedFiltersList);
+    displayUpdatedLists(updatedRecipesList);
 }
 
 function unselectFilter(filterToRemove) {

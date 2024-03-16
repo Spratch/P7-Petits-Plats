@@ -10,6 +10,7 @@ function setupFilterDropdownEvents() {
         });
     });
 }
+
 let filterSelectorListeners = {};
 // Click listener on dropdown filter list items
 export function setupFilterItemEvents() {
@@ -117,8 +118,6 @@ function setupFilterSearchEvents() {
             if (inputValue.length >= minimumValueLength) {
                 const filtersItems = Array.from(filtersList.getElementsByTagName("li"));
                 filterFiltersFromSearch(inputValue, filtersItems);
-                // const updatedFiltersList = filterFiltersFromSearch(inputValue, filtersItems);
-                // filtersList.innerHTML = updatedFiltersList;
             }
         });
     });
