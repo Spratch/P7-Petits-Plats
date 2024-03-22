@@ -8,17 +8,13 @@ export function filterFromSelectedFilters(selectedFiltersList) {
         updatedRecipesList = updatedRecipesList.filter((recipe) => {
             switch (filterType) {
                 case "ingredient":
-                    return recipe.ingredients.some(item => item.ingredient.toLowerCase().includes(filterName));
-                    break;
+                    return recipe.ingredients.some(item => item.ingredient.toLowerCase() === filterName);
                 case "appliance":
                     return recipe.appliance.toLowerCase() === filterName;
-                    break;            
                 case "ustensil":
-                    return recipe.ustensils.some(item => item.toLowerCase().includes(filterName));
-                    break;
+                    return recipe.ustensils.some(item => item.toLowerCase() === filterName);
                 default:
-                    return true;
-                    break;
+                    return false;
             }
         });
     });
