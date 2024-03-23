@@ -1,6 +1,5 @@
-export function filterFromSelectedFilters(selectedFiltersList) {
-    
-    let updatedRecipesList = recipes;
+export function filterFromSelectedFilters(selectedFiltersList, currentRecipesList) {
+    let updatedRecipesList = currentRecipesList;
     selectedFiltersList.forEach((filterObj) => {
         const filterType = filterObj.filterId.split("-")[0];
         const filterName = filterObj.filterName.toLowerCase();

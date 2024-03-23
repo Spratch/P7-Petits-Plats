@@ -1,5 +1,5 @@
 import { toggleDropdownClasses, toggleFilter, toggleFilterDropdown } from "./filters.js";
-import { displayUpdatedLists, filterFiltersFromSearch, filterFromSearchbar, resetFilterSearch } from "./filters/index.js";
+import { applyCombinedFilters, displayUpdatedLists, filterFiltersFromSearch, resetFilterSearch } from "./filters/index.js";
 
 // Click listener on filter list dropdown buttons
 function setupFilterDropdownEvents() {
@@ -104,12 +104,7 @@ function setupMainSearchbarEvents() {
         setupResetButtonsEvents(searchbarInput, resetButton);
 
         // Updates recipes and filters lists
-        const inputValue = searchbarInput.value;
-        const minimumValueLength = 3;
-        if (inputValue.length >= minimumValueLength) {
-            const updatedRecipesList = filterFromSearchbar(inputValue);
-            displayUpdatedLists(updatedRecipesList);
-        }
+        applyCombinedFilters();
     });
 }
 
