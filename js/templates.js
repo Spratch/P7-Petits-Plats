@@ -86,9 +86,9 @@ export function filtersTemplate(recipesList = recipes) {
     
     function getFilterListDOM(selectedFiltersList) {
         const selectedFiltersIds = selectedFiltersList.map((filter) => filter.filterId);
-        const ingredientsListDOM = createListDOM(ingredientsList, "ingredient", selectedFiltersIds);
-        const appliancesListDOM = createListDOM(appliancesList, "appliance", selectedFiltersIds);
-        const ustensilsListDOM = createListDOM(ustensilsList, "ustensil", selectedFiltersIds);
+        const ingredientsListDOM = createListDOM(ingredientsList, "ingredients", selectedFiltersIds);
+        const appliancesListDOM = createListDOM(appliancesList, "appliances", selectedFiltersIds);
+        const ustensilsListDOM = createListDOM(ustensilsList, "ustensils", selectedFiltersIds);
     
         return { ingredientsListDOM, appliancesListDOM, ustensilsListDOM };
     }

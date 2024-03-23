@@ -7,11 +7,11 @@ export function filterFromSelectedFilters(selectedFiltersList) {
 
         updatedRecipesList = updatedRecipesList.filter((recipe) => {
             switch (filterType) {
-                case "ingredient":
+                case "ingredients":
                     return recipe.ingredients.some(item => item.ingredient.toLowerCase() === filterName);
-                case "appliance":
+                case "appliances":
                     return recipe.appliance.toLowerCase() === filterName;
-                case "ustensil":
+                case "ustensils":
                     return recipe.ustensils.some(item => item.toLowerCase() === filterName);
                 default:
                     return false;

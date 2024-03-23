@@ -19,7 +19,8 @@ export function setupFilterItemEvents() {
         const itemId = label.getAttribute("for");
 
         label.addEventListener('click', () => {
-            toggleFilter(itemName, itemId, true) 
+            toggleFilter(itemName, itemId, true);
+            resetInput(itemId, undefined);
         });
     });
 }
@@ -57,31 +58,41 @@ export function closeDropdownsOnEscape(event) {
     }
 }
 
+function resetInput(inputId, resetButton) {
+    if (inputId == "searchbar") {
+        displayUpdatedLists();
+    } else {
+        const filterType = inputId.split("-")[0];
+        // Show all filters
+        const filtersList = document.querySelector(`#dropdown-${filterType} ul`);
+        const filtersItems = Array.from(filtersList.getElementsByTagName("li"));        
+        resetFilterSearch(filtersItems);
+        // Reset input
+        const input = document.getElementById(`${filterType}-search`);
+        input.value = "";
+        // Hide reset button
+        resetButton = document.getElementById(`${filterType}-reset`)
+    }
+    resetButton.classList.add("opacity-0", "pointer-events-none");
+}
+
 // Reset buttons
 function setupResetButtonsEvents(input, resetButton) {
     const inputValue = input.value;
+    const inputId = input.id;
 
     // Displays cross
     if (inputValue.length >= 1) {
         resetButton.classList.remove("opacity-0", "pointer-events-none");
     }
     // Reset recipes list
+    function handleResetInput() {
+        resetInput(inputId, resetButton);
+    }
     if (inputValue.length == 0) {
-        resetInput();
+        handleResetInput()
     }
-    resetButton.addEventListener('click', resetInput);
-
-    function resetInput() {
-        resetButton.classList.add("opacity-0", "pointer-events-none");
-        if (input.id == "searchbar") {
-            displayUpdatedLists();
-        } else {
-            const filterType = input.id.split("-")[0];
-            const filtersList = document.querySelector(`#dropdown-${filterType} ul`);
-            const filtersItems = Array.from(filtersList.getElementsByTagName("li"));        
-            resetFilterSearch(filtersItems);
-        }
-    }
+    resetButton.addEventListener('click', handleResetInput);
 }
 
 // Keydown listener in main searchbar
