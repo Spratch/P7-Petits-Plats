@@ -1,7 +1,7 @@
-import { ApplyCombinedFilters } from "./combinedFilters.js";
+import { applyCombinedFilters } from "./combinedFilters.js";
 import { filterFiltersFromSearch, resetFilterSearch } from "./filterSearch.js";
 import { displayUpdatedLists } from "./listsUpdater.js";
 import { filterFromSearchbar } from "./searchbar.js";
 import { filterFromSelectedFilters } from "./selectedFilters.js";
 
-export { filterFromSearchbar, displayUpdatedLists, filterFiltersFromSearch, resetFilterSearch, filterFromSelectedFilters, ApplyCombinedFilters as combinedFilters };
+export { filterFromSearchbar, displayUpdatedLists, filterFiltersFromSearch, resetFilterSearch, filterFromSelectedFilters, applyCombinedFilters };
